@@ -1,12 +1,17 @@
 import React, { FormEvent, useRef } from 'react';
 
-function AddTodo() {
+interface addTodo {
+  addTodoHandler: (text: string) => void;
+}
+
+function AddTodo({ addTodoHandler }: addTodo) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   function onSubmitHandler(event: FormEvent) {
     event.preventDefault();
     const enteredText = inputRef.current!.value;
     console.log(enteredText);
+    addTodoHandler(enteredText);
   }
 
   return (
